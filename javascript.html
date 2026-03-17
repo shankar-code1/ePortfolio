@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript · Shankar</title>
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+  <!-- canvas-confetti for the splash effect -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+  <style>
+    html { scroll-padding-top: 80px; }
+    * { font-family: 'Inter', sans-serif; }
+    body { background: #f8fafc; }
+    .nav-link { font-weight: 500; color: #1e293b !important; }
+    .nav-link:hover,
+    .nav-link.active {
+      color: #0b2b44 !important;
+      border-bottom: 2px solid #0b2b44;
+    }
+    .btn-outline-custom { border: 1px solid #1b4a6b; color: #1b4a6b; border-radius: 40px; }
+    .btn-outline-custom:hover { background: #1b4a6b; color: white; }
+    .section-card { background: white; border-radius: 2rem; padding: 2rem; margin: 2rem 0; box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
+    .demo-box { background: #f1f5f9; border-radius: 1.5rem; padding: 1.5rem; margin-top: 1.5rem; border: 1px dashed #94a3b8; transition: background-color 0.3s; }
+    .js-concept-table th { background: #1b4a6b; color: white; }
+    .example-badge { background: #eef2f6; padding: 0.2rem 0.8rem; border-radius: 2rem; font-family: monospace; font-size: 0.85rem; display: inline-block; }
+    .limit-reached { background-color: #dc3545 !important; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-code-square me-2" style="color:#1b4a6b;"></i>Shankar·FullStack</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="fullstack.html">Full stack</a></li>
+          <li class="nav-item"><a class="nav-link" href="html.html">HTML</a></li>
+          <li class="nav-item"><a class="nav-link" href="css.html">CSS</a></li>
+          <li class="nav-item"><a class="nav-link" href="bootstrap.html">Bootstrap</a></li>
+          <li class="nav-item"><a class="nav-link active" href="javascript.html">JavaScript</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Introduction to JavaScript -->
+    <section class="section-card">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <i class="bi bi-filetype-js" style="font-size:2.5rem; color:#f7df1e;"></i>
+        <h2 class="fw-bold mb-0">JavaScript – making pages interactive</h2>
+      </div>
+      <p><strong>JavaScript</strong> is the programming language of the web. It allows you to create dynamic content, control multimedia, animate images, and handle user interactions. Everything from form validation to complex single-page applications is powered by JS.</p>
+    </section>
+
+    <!-- Original interactive demo (enhanced with description) -->
+    <section class="section-card">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <i class="bi bi-lightning-charge" style="font-size:2.5rem; color:#f7df1e;"></i>
+        <h2 class="fw-bold mb-0">Live interactive examples</h2>
+      </div>
+      <p>Below are two classic JavaScript demos: a live character counter and a confetti‑popping toggle. They show real‑time DOM manipulation, event handling, and even using an external library (canvas‑confetti).</p>
+      <div class="demo-box" id="jsDemoBox">
+        <label for="message" class="form-label fw-semibold">Write something (max 50 chars):</label>
+        <textarea class="form-control" id="message" rows="2" maxlength="50" oninput="updateCounter()" placeholder="e.g. JavaScript is cool!"></textarea>
+        <div class="d-flex justify-content-between mt-2">
+          <span id="charCount" class="badge bg-secondary">0 / 50</span>
+          <span id="remainingMsg" class="small fw-semibold"></span>
+        </div>
+
+        <hr class="my-3">
+        <button class="btn btn-outline-custom" onclick="toggleColorWithConfetti()">✨ change box color & splash</button>
+        <p class="small mt-2" id="bgStatus">Background: default light grey</p>
+      </div>
+      <p><strong>What's happening:</strong> The <code>oninput</code> event updates the character count. When you click the button, an <code>onclick</code> event toggles the background colour and fires confetti inside the box using the canvas‑confetti library.</p>
+    </section>
+
+    <!-- JavaScript concepts table (common topics) -->
+    <section class="section-card">
+      <div class="d-flex align-items-center gap-3 mb-4">
+        <i class="bi bi-book" style="font-size:2.5rem; color:#f7df1e;"></i>
+        <h2 class="fw-bold mb-0">📘 Core JavaScript concepts</h2>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered js-concept-table align-middle bg-white">
+          <thead>
+            <tr><th>Concept</th><th>Description</th><th>Code example</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Variables</strong></td>
+              <td>Store data values. <code>let</code> and <code>const</code> are block‑scoped; <code>var</code> is function‑scoped.</td>
+              <td><span class="example-badge">let count = 0; const MAX = 50;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Functions</strong></td>
+              <td>Reusable blocks of code. Can be declarations, expressions, or arrow functions.</td>
+              <td><span class="example-badge">function add(a,b) { return a+b; }<br>const square = x => x*x;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Events</strong></td>
+              <td>React to user actions like clicks, typing, or mouse movements.</td>
+              <td><span class="example-badge">element.addEventListener('click', () => { ... });</span></td>
+            </tr>
+            <tr>
+              <td><strong>DOM manipulation</strong></td>
+              <td>Access and modify HTML elements dynamically.</td>
+              <td><span class="example-badge">document.getElementById('id').innerText = 'Hello';</span></td>
+            </tr>
+            <tr>
+              <td><strong>Arrays</strong></td>
+              <td>Ordered lists of items. Many built‑in methods like <code>push</code>, <code>map</code>, <code>filter</code>.</td>
+              <td><span class="example-badge">let fruits = ['apple','banana'];<br>fruits.push('orange');</span></td>
+            </tr>
+            <tr>
+              <td><strong>Objects</strong></td>
+              <td>Key‑value pairs for structured data.</td>
+              <td><span class="example-badge">let user = { name: 'Shankar', age: 24 };</span></td>
+            </tr>
+            <tr>
+              <td><strong>Template literals</strong></td>
+              <td>Strings with embedded expressions using backticks.</td>
+              <td><span class="example-badge">`Hello, ${user.name}!`</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ES5 vs ES6+ comparison -->
+    <section class="section-card">
+      <div class="d-flex align-items-center gap-3 mb-4">
+        <i class="bi bi-arrow-repeat" style="font-size:2.5rem; color:#f7df1e;"></i>
+        <h2 class="fw-bold mb-0">⚡ ES5 vs ES6+ (modern JavaScript)</h2>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle bg-white">
+          <thead style="background:#0b2b44; color:white;">
+            <tr><th>Feature</th><th>ES5 (older)</th><th>ES6+ (modern)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Variable declaration</strong></td>
+              <td><code>var</code> (function‑scoped, can be redeclared)</td>
+              <td><code>let</code> & <code>const</code> (block‑scoped, no redeclaration)</td>
+            </tr>
+            <tr>
+              <td><strong>Functions</strong></td>
+              <td><code>function</code> keyword only</td>
+              <td>Arrow functions <code>() => {}</code> – shorter and lexical <code>this</code></td>
+            </tr>
+            <tr>
+              <td><strong>String concatenation</strong></td>
+              <td><code>'Hello ' + name</code></td>
+              <td>Template literals <code>`Hello ${name}`</code></td>
+            </tr>
+            <tr>
+              <td><strong>Array iteration</strong></td>
+              <td><code>for</code> loop, <code>forEach</code> (ES5 added)</td>
+              <td><code>map</code>, <code>filter</code>, <code>reduce</code>, <code>for...of</code></td>
+            </tr>
+            <tr>
+              <td><strong>Objects</strong></td>
+              <td>Basic object literals</td>
+              <td>Destructuring, spread operator <code>{...obj}</code>, shorthand properties</td>
+            </tr>
+            <tr>
+              <td><strong>Modules</strong></td>
+              <td>No native module system (used script tags or CommonJS)</td>
+              <td><code>import</code> / <code>export</code> – native modules</td>
+            </tr>
+            <tr>
+              <td><strong>Promises</strong></td>
+              <td>No native promises (used callbacks or libraries)</td>
+              <td>Native <code>Promise</code>, <code>async/await</code> for clean asynchronous code</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-muted small mt-3"><i class="bi bi-check-circle"></i> Modern JavaScript (ES6+) makes code cleaner, safer, and more expressive.</p>
+    </section>
+
+    <!-- Asynchronous JavaScript -->
+    <section class="section-card">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <i class="bi bi-clock-history" style="font-size:2.5rem; color:#f7df1e;"></i>
+        <h2 class="fw-bold mb-0">⏳ Asynchronous JS – callbacks, promises, async/await</h2>
+      </div>
+      <p>JavaScript handles operations that take time (like fetching data from an API) without freezing the page. Here's a quick example of fetching fake user data.</p>
+      <div class="demo-box">
+        <button class="btn btn-outline-custom mb-3" onclick="fetchUser()">📡 Fetch random user</button>
+        <div id="userResult" class="p-3 bg-white rounded-4 border" style="min-height: 80px;">
+          Click the button to load data.
+        </div>
+        <pre style="background:#1e293b; color:#e2e8f0; padding:1rem; border-radius:1rem; margin-top:1rem;"><code>async function fetchUser() {
+  const res = await fetch('https://randomuser.me/api/');
+  const data = await res.json();
+  const user = data.results[0];
+  return `${user.name.first} ${user.name.last}`;
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Summary / call to action -->
+    <section class="section-card text-center" style="background: linear-gradient(145deg, #f1f5f9, #ffffff);">
+      <i class="bi bi-filetype-js" style="font-size:3rem; color:#f7df1e;"></i>
+      <h3 class="fw-bold mt-3">JavaScript powers the interactive web</h3>
+      <p class="lead mx-auto" style="max-width:700px;">From simple counters to full‑stack frameworks, JavaScript is essential for modern development. The examples above show just a tiny fraction of what it can do.</p>
+    </section>
+  </main>
+
+  <footer class="bg-white text-center p-4 mt-5 border-top"><p class="mb-0">Made with ❤️ and ☕ in Nepal</p></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Existing functions from original demo
+    function updateCounter() {
+      const textarea = document.getElementById('message');
+      const countSpan = document.getElementById('charCount');
+      const remainingMsg = document.getElementById('remainingMsg');
+      const len = textarea.value.length;
+      countSpan.innerText = len + ' / 50';
+
+      if (len === 50) {
+        countSpan.classList.add('limit-reached');
+        remainingMsg.innerText = '🚫 Limit reached';
+        remainingMsg.style.color = '#dc3545';
+      } else {
+        countSpan.classList.remove('limit-reached');
+        if (len >= 45) {
+          remainingMsg.innerText = '⚠️ nearing limit';
+          remainingMsg.style.color = '#b02e0c';
+        } else {
+          remainingMsg.innerText = '';
+        }
+      }
+    }
+
+    function toggleColorWithConfetti() {
+      const box = document.getElementById('jsDemoBox');
+      const status = document.getElementById('bgStatus');
+      
+      // Check current background color (default is light grey #f1f5f9)
+      const currentColor = box.style.backgroundColor;
+      const isWarmAntique = currentColor === 'rgb(250, 235, 215)' || currentColor === '#faebd7';
+      
+      if (isWarmAntique) {
+        // Switch back to light grey – NO confetti
+        box.style.backgroundColor = '#f1f5f9';
+        box.style.border = '1px dashed #94a3b8';
+        status.innerText = 'Background: default light grey (no confetti)';
+      } else {
+        // Switch to warm antique white – WITH BIG confetti inside the box
+        box.style.backgroundColor = '#faebd7'; // warm antique white
+        box.style.border = '2px solid #c4a27a';
+        status.innerText = 'Background: warm antique white + BIG confetti inside!';
+
+        // Get box position for confetti origin
+        const rect = box.getBoundingClientRect();
+        const centerX = (rect.left + rect.width / 2) / window.innerWidth;
+        const centerY = (rect.top + rect.height / 2) / window.innerHeight;
+
+        // Fire multiple bursts for a bigger, wider splash
+        confetti({
+          particleCount: 200,
+          spread: 100,
+          startVelocity: 35,
+          origin: { x: centerX, y: centerY },
+          colors: ['#ffb6c1', '#ff69b4', '#ffd700', '#98fb98', '#e6e6fa', '#faebd7', '#ffa07a', '#20b2aa']
+        });
+
+        setTimeout(() => {
+          confetti({
+            particleCount: 100,
+            spread: 80,
+            startVelocity: 25,
+            origin: { x: centerX - 0.02, y: centerY - 0.02 },
+            colors: ['#ffb6c1', '#ff69b4', '#ffd700', '#98fb98', '#e6e6fa']
+          });
+        }, 100);
+      }
+    }
+
+    // Async fetch demo
+    async function fetchUser() {
+      const resultDiv = document.getElementById('userResult');
+      resultDiv.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Loading...';
+      try {
+        const res = await fetch('https://randomuser.me/api/');
+        const data = await res.json();
+        const user = data.results[0];
+        resultDiv.innerHTML = `
+          <strong>${user.name.first} ${user.name.last}</strong><br>
+          📍 ${user.location.city}, ${user.location.country}<br>
+          <img src="${user.picture.thumbnail}" class="rounded-circle mt-2">
+        `;
+      } catch (error) {
+        resultDiv.innerText = 'Error fetching user.';
+      }
+    }
+
+    window.onload = function() {
+      updateCounter();
+      document.getElementById('jsDemoBox').style.backgroundColor = '#f1f5f9';
+    };
+  </script>
+</body>
+</html>

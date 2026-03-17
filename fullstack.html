@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full stack · Shankar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-padding-top: 80px; }
+    * { font-family: 'Inter', sans-serif; }
+    body { background: #f8fafc; }
+    .nav-link { font-weight: 500; color: #1e293b !important; }
+    .nav-link:hover,
+    .nav-link.active {
+      color: #0b2b44 !important;
+      border-bottom: 2px solid #0b2b44;
+    }
+    .btn-outline-custom {
+      border: 1px solid #1b4a6b;
+      color: #1b4a6b;
+      border-radius: 40px;
+    }
+    .btn-outline-custom:hover,
+    .btn-outline-custom.active {
+      background: #1b4a6b;
+      color: white;
+    }
+    .section-card { background: white; border-radius: 2rem; padding: 2rem; margin: 2rem 0; box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
+    .demo-box { background: #f1f5f9; border-radius: 1.5rem; padding: 1.5rem; margin-top: 1.5rem; border: 1px dashed #94a3b8; }
+    pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 1rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-size: 0.9rem;
+    }
+    code { font-family: 'Courier New', monospace; }
+    .badge-large { font-size: 0.9rem; padding: 0.6rem 1.2rem; }
+    .quote-definition {
+      background: #eef2f6;
+      border-left: 5px solid #1b4a6b;
+      padding: 1.2rem 1.5rem;
+      border-radius: 1rem;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-code-square me-2" style="color:#1b4a6b;"></i>Shankar·FullStack</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="fullstack.html">Full stack</a></li>
+          <li class="nav-item"><a class="nav-link" href="html.html">HTML</a></li>
+          <li class="nav-item"><a class="nav-link" href="css.html">CSS</a></li>
+          <li class="nav-item"><a class="nav-link" href="bootstrap.html">Bootstrap</a></li>
+          <li class="nav-item"><a class="nav-link" href="javascript.html">JavaScript</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- 1. FULL STACK DEFINITION (exact from PDF) + interactive demo -->
+    <section class="section-card">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <i class="bi bi-stack" style="font-size:2.5rem; color:#1b4a6b;"></i>
+        <h2 class="fw-bold mb-0">What is full stack development?</h2>
+      </div>
+      <div class="quote-definition">
+        <p class="mb-0"> “Full stack means working on both the front end and the back end of a website or web application. The front end is the part users see and interact with, like buttons, pages, and layouts. It is usually built using technologies such as HTML, CSS, and JavaScript. The back end is the part behind the scenes. It handles things like servers, databases, and application logic. Technologies such as Node.js, Python, and databases like MySQL are commonly used. A full stack developer is someone who can work on both sides, meaning they can build what users see and also manage the system that runs in the background.”</p>
+      </div>
+      <p class="mt-3">Click the buttons below to see a quick summary of each layer – the rest of this page dives into concrete examples with code.</p>
+      <div class="demo-box">
+        <div class="btn-group flex-wrap mb-4">
+          <button class="btn btn-outline-custom active" id="btnFrontend" onclick="showLayer('frontend')">🎨 Frontend</button>
+          <button class="btn btn-outline-custom" id="btnBackend" onclick="showLayer('backend')">⚙️ Backend</button>
+          <button class="btn btn-outline-custom" id="btnDb" onclick="showLayer('db')">🗄️ Database</button>
+        </div>
+        <div id="layerInfo" class="p-3 bg-white rounded-4 border">
+          <h3 class="h5" id="layerTitle">Frontend (client-side)</h3>
+          <p id="layerDesc">HTML, CSS, JavaScript, frameworks like React. I built this whole site with Bootstrap.</p>
+        </div>
+        <p class="mt-3 small text-muted"><i class="bi bi-info-circle"></i> This toggler is a tiny example of frontend interactivity – JavaScript updates the text without reloading the page.</p>
+      </div>
+    </section>
+
+    <!-- 2. FRONTEND section with definition + interactive counter -->
+    <section class="section-card">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <i class="bi bi-code-slash" style="font-size:2.5rem; color:#1b4a6b;"></i>
+        <h2 class="fw-bold mb-0">1. Frontend in action</h2>
+      </div>
+      <div class="quote-definition">
+        <p class="mb-0"> “Frontend is the part of a website or web application that users see and interact with directly. When you open a website, everything on the screen—like the layout, buttons, images, menus, and text—is part of the frontend. In simple words, the frontend focuses on how the website looks and feels. It makes sure the page is easy to use, visually attractive, and works smoothly when someone clicks or types something. Frontend developers usually build this part using technologies such as HTML to create the structure of the page, CSS to design and style it, and JavaScript to add interactivity like animations, forms, and dynamic content.”</p>
+      </div>
+      <p>Below is a minimal but complete frontend interaction built with HTML, CSS (via Bootstrap), and vanilla JavaScript. It shows how JavaScript directly manipulates the DOM.</p>
+      <div class="demo-box">
+        <div class="text-center mb-4">
+          <h3 id="counterValue" class="display-4 fw-bold" style="color:#1b4a6b;">0</h3>
+          <button class="btn btn-outline-custom px-4 me-2" id="incrementBtn">➕ Increment</button>
+          <button class="btn btn-outline-custom px-4" id="resetBtn">⟲ Reset</button>
+        </div>
+        <pre><code>// Frontend JavaScript (DOM manipulation)
+let count = 0;
+const counterEl = document.getElementById('counterValue');
+const incBtn = document.getElementById('incrementBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+incBtn.addEventListener('click', () => {
+  count++;
+  counterEl.textContent = count;
+});
+
+resetBtn.addEventListener('click', () => {
+  count = 0;
+  counterEl.textContent = count;
+});</code></pre>
+        <p class="mt-3 small text-muted"><i class="bi bi-arrow-repeat"></i> The counter above uses exactly this code – fully interactive. That’s the essence of frontend: structure (HTML), style (CSS classes), and behaviour (JS).</p>
+      </div>
+      <p class="mt-2"><strong>🧠 Key takeaway:</strong> Frontend is what users see and touch. It's built with HTML, CSS, and JavaScript, and it can communicate with the backend to fetch or send data.</p>
+    </section>
+
+    <!-- 3. BACKEND section with definition + PHP example -->
+    <section class="section-card">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <i class="bi bi-hdd-stack" style="font-size:2.5rem; color:#1b4a6b;"></i>
+        <h2 class="fw-bold mb-0">2. Backend example (PHP)</h2>
+      </div>
+      <div class="quote-definition">
+        <p class="mb-0"> “Backend is the part of a website or web application that works behind the scenes. Users usually don’t see it, but it is what makes the website actually function. The backend handles things like storing data, processing requests, managing users, and connecting the website to a database. For example, when someone logs into a website or submits a form, the backend processes that information and sends the correct response. Backend development is usually done with programming languages such as Python, PHP, or Node.js, and it often uses databases like MySQL.”</p>
+      </div>
+      <p>Here is a simple backend API written in PHP that returns a list of users as JSON – exactly what a frontend would fetch to display profiles.</p>
+      <div class="demo-box">
+        <pre><code>&lt;?php
+// api/users.php – backend endpoint written in PHP
+header('Content-Type: application/json');
+
+// Simulated data (in a real app this would come from a database)
+$users = [
+  ['id' => 1, 'name' => 'Shankar', 'role' => 'full stack dev'],
+  ['id' => 2, 'name' => 'Sita', 'role' => 'frontend specialist'],
+  ['id' => 3, 'name' => 'Rajan', 'role' => 'backend engineer']
+];
+
+// Output JSON
+echo json_encode($users);
+?&gt;</code></pre>
+        <p class="mt-2 small text-muted">If you place this file on a PHP server (like Apache or <code>php -S localhost:8000</code>), visiting <code>/api/users.php</code> returns a JSON array. A frontend can fetch it using <code>fetch('/api/users.php')</code>.</p>
+        <p class="mt-2"><strong>Real‑world:</strong> A full stack developer would connect this to a MySQL database, add validation, authentication, and handle different HTTP methods.</p>
+      </div>
+      <p><strong>🧠 Key takeaway:</strong> The backend runs on a server, processes logic, and talks to the database. It provides data and services to the frontend.</p>
+    </section>
+
+    <!-- 4. DATABASE section with definition + SQL only -->
+    <section class="section-card">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <i class="bi bi-database" style="font-size:2.5rem; color:#1b4a6b;"></i>
+        <h2 class="fw-bold mb-0">3. Database example (SQL)</h2>
+      </div>
+      <div class="quote-definition">
+        <p class="mb-0"> “A database is a place where a website or application stores and organizes data so it can be easily accessed and managed later. For example, when you create an account on a website, your username, password, and other details are saved in a database. The system can then quickly find that information when you log in again. Databases help websites store large amounts of information in an organized way. Developers often use systems like MySQL or MongoDB to manage this data.”</p>
+      </div>
+      <p>Below is how you would define and query a table using SQL (MySQL/PostgreSQL). This is the language used to interact with relational databases.</p>
+      <div class="demo-box">
+        <h3 class="h6 fw-bold">🗃️ SQL (MySQL)</h3>
+        <pre><code>-- Create a table to store users
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insert a new user (e.g., during registration)
+INSERT INTO users (name, email) 
+VALUES ('Shankar', 'shankar@fullstack.dev');
+
+-- Retrieve all users (e.g., for an admin panel)
+SELECT * FROM users;
+
+-- Find a specific user by email (e.g., login)
+SELECT * FROM users WHERE email = 'shankar@fullstack.dev';
+
+-- Join example (if there were orders)
+SELECT users.name, orders.total
+FROM users
+JOIN orders ON users.id = orders.user_id;</code></pre>
+        <p class="mt-3 small text-muted">These SQL statements would be embedded in backend code (like PHP) to persist and retrieve data. Understanding SQL is essential for any full stack developer.</p>
+      </div>
+      <p><strong>🧠 Key takeaway:</strong> The database stores all persistent data. It is the foundation that both the backend and frontend ultimately rely on.</p>
+    </section>
+
+    <!-- summary section (attractive) -->
+    <section class="section-card text-center" style="background: linear-gradient(145deg, #f1f5f9, #ffffff);">
+      <i class="bi bi-globe2" style="font-size:3rem; color:#1b4a6b;"></i>
+      <h3 class="fw-bold mt-3">Full stack = frontend + backend + database</h3>
+      <p class="lead mx-auto" style="max-width:700px;">The three layers work together: the frontend (what users see) talks to the backend (server logic), which reads from and writes to the database. As a junior full stack developer, I'm comfortable working across all three.</p>
+      <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+        <span class="badge bg-dark text-white px-4 py-2 rounded-pill badge-large">HTML/CSS/JS</span>
+        <span class="badge bg-dark text-white px-4 py-2 rounded-pill badge-large">PHP</span>
+        <span class="badge bg-dark text-white px-4 py-2 rounded-pill badge-large">SQL (MySQL)</span>
+        <span class="badge bg-dark text-white px-4 py-2 rounded-pill badge-large">REST APIs</span>
+      </div>
+      <!-- <p class="mt-4 text-muted"><i class="bi bi-check-circle-fill me-1" style="color:#1b4a6b;"></i> All definitions and examples match the PDF assignment exactly.</p> -->
+    </section>
+  </main>
+
+  <footer class="bg-white text-center p-4 mt-5 border-top"><p class="mb-0">Made with ❤️ and ☕ in Nepal</p></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ----- layer toggle (full stack intro) -----
+    function showLayer(layer) {
+      document.getElementById('btnFrontend').classList.remove('active');
+      document.getElementById('btnBackend').classList.remove('active');
+      document.getElementById('btnDb').classList.remove('active');
+      if (layer === 'frontend') {
+        document.getElementById('btnFrontend').classList.add('active');
+        document.getElementById('layerTitle').innerText = 'Frontend (client-side)';
+        document.getElementById('layerDesc').innerText = 'HTML, CSS, JavaScript, frameworks like React. It\'s everything the user touches and sees.';
+      } else if (layer === 'backend') {
+        document.getElementById('btnBackend').classList.add('active');
+        document.getElementById('layerTitle').innerText = 'Backend (server-side)';
+        document.getElementById('layerDesc').innerText = 'Server languages (PHP, Node.js, Python), APIs, authentication. Handles logic and data.';
+      } else if (layer === 'db') {
+        document.getElementById('btnDb').classList.add('active');
+        document.getElementById('layerTitle').innerText = 'Database';
+        document.getElementById('layerDesc').innerText = 'Stores and retrieves data: SQL (MySQL, PostgreSQL) and also NoSQL. Works with backend to persist info.';
+      }
+    }
+
+    // ----- frontend counter -----
+    document.addEventListener('DOMContentLoaded', function() {
+      let count = 0;
+      const counterEl = document.getElementById('counterValue');
+      const incBtn = document.getElementById('incrementBtn');
+      const resetBtn = document.getElementById('resetBtn');
+
+      if (incBtn && resetBtn && counterEl) {
+        incBtn.addEventListener('click', () => {
+          count++;
+          counterEl.textContent = count;
+        });
+
+        resetBtn.addEventListener('click', () => {
+          count = 0;
+          counterEl.textContent = count;
+        });
+      }
+    });
+  </script>
+</body>
+</html>
