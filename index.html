@@ -4,26 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shankar · Full Stack Portfolio</title>
-  <!-- Bootstrap 5 + Icons -->
+  <!-- Bootstrap 5 + icons for styling and components -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Google Font: Inter for clean typography -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
   <style>
+    /* So anchor links don't hide behind the fixed navbar */
     html { scroll-padding-top: 80px; }
+    /* Use Inter everywhere, fallback to sans-serif */
     * { font-family: 'Inter', sans-serif; }
     body { background: #f8fafc; }
+    /* Hero background: dark blue gradient with rounded bottom */
     .hero-gradient {
       background: linear-gradient(145deg, #0b2b44, #1b4a6b);
       color: white;
       padding: 4rem 2rem;
       border-radius: 0 0 3rem 3rem;
     }
+    /* Nav links styling and active/hover underline */
     .nav-link { font-weight: 500; color: #1e293b !important; }
     .nav-link:hover,
     .nav-link.active {
       color: #0b2b44 !important;
       border-bottom: 2px solid #0b2b44;
     }
+    /* Custom button style (might be used elsewhere) */
     .btn-outline-custom {
       border: 1px solid #1b4a6b;
       color: #1b4a6b;
@@ -33,7 +39,7 @@
       background: #1b4a6b;
       color: white;
     }
-    /* hover effect for topic cards */
+    /* Card hover effect: lift and shadow */
     .jump-card {
       transition: all 0.3s ease;
       border: none;
@@ -44,6 +50,7 @@
       box-shadow: 0 20px 30px rgba(0, 30, 60, 0.15) !important;
       cursor: pointer;
     }
+    /* Remove underline from links inside cards */
     .jump-card a {
       text-decoration: none;
       color: inherit;
@@ -51,6 +58,7 @@
   </style>
 </head>
 <body>
+  <!-- Sticky navbar with brand and nav links -->
   <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm sticky-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-code-square me-2" style="color:#1b4a6b;"></i>Shankar·FullStack</a>
@@ -70,6 +78,7 @@
     </div>
   </nav>
 
+  <!-- Hero section: intro and badges -->
   <div class="hero-gradient text-center text-lg-start">
     <div class="container">
       <div class="row align-items-center">
@@ -85,18 +94,21 @@
     </div>
   </div>
 
+  <!-- Main content: cards for each topic, clickable -->
   <main class="container my-5">
     <h2 class="fw-bold mb-4">Jump to a topic</h2>
     <div class="row g-4">
+      <!-- Full stack card -->
       <div class="col-md-4">
         <a href="fullstack.html" class="text-decoration-none">
           <div class="card jump-card p-4 text-center shadow-sm">
             <i class="bi bi-stack fs-1" style="color:#1b4a6b;"></i>
-            <h3 class="h4">Full stack</h3>  <!-- h3 with h4 visual size -->
+            <h3 class="h4">Full stack</h3>  <!-- using h3 for structure, styled as h4 -->
             <p class="mb-0">What it means + interactive layers</p>
           </div>
         </a>
       </div>
+      <!-- HTML card with orange icon -->
       <div class="col-md-4">
         <a href="html.html" class="text-decoration-none">
           <div class="card jump-card p-4 text-center shadow-sm">
@@ -106,6 +118,7 @@
           </div>
         </a>
       </div>
+      <!-- CSS card with blue icon -->
       <div class="col-md-4">
         <a href="css.html" class="text-decoration-none">
           <div class="card jump-card p-4 text-center shadow-sm">
@@ -115,6 +128,7 @@
           </div>
         </a>
       </div>
+      <!-- Bootstrap card with purple icon -->
       <div class="col-md-4">
         <a href="bootstrap.html" class="text-decoration-none">
           <div class="card jump-card p-4 text-center shadow-sm">
@@ -124,6 +138,7 @@
           </div>
         </a>
       </div>
+      <!-- JavaScript card with yellow icon -->
       <div class="col-md-4">
         <a href="javascript.html" class="text-decoration-none">
           <div class="card jump-card p-4 text-center shadow-sm">
@@ -133,6 +148,7 @@
           </div>
         </a>
       </div>
+      <!-- About card with teal icon -->
       <div class="col-md-4">
         <a href="about.html" class="text-decoration-none">
           <div class="card jump-card p-4 text-center shadow-sm">
@@ -145,7 +161,9 @@
     </div>
   </main>
 
+  <!-- Footer: simple credit -->
   <footer class="bg-white text-center p-4 mt-5 border-top"><p class="mb-0">Made with ❤️ and ☕ in Nepal</p></footer>
+  <!-- Bootstrap JS for responsive menu and components -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

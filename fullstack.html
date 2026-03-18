@@ -4,19 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Full stack · Shankar</title>
+  <!-- Bootstrap 5 CSS – gives us grid, buttons, cards, and utilities -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons – nice icon set for visual elements -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Google Fonts Inter – clean, modern font for the whole site -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
   <style>
+    /* So that anchor links don't hide behind the fixed navbar when clicked */
     html { scroll-padding-top: 80px; }
+    /* Use Inter everywhere, with fallback */
     * { font-family: 'Inter', sans-serif; }
+    /* Light background for the whole page */
     body { background: #f8fafc; }
+    /* Navigation link styling – normal state and hover/active underline */
     .nav-link { font-weight: 500; color: #1e293b !important; }
     .nav-link:hover,
     .nav-link.active {
       color: #0b2b44 !important;
       border-bottom: 2px solid #0b2b44;
     }
+    /* Custom outline button – used for toggles and counters */
     .btn-outline-custom {
       border: 1px solid #1b4a6b;
       color: #1b4a6b;
@@ -27,8 +35,11 @@
       background: #1b4a6b;
       color: white;
     }
+    /* White card with soft shadow – used for each major section */
     .section-card { background: white; border-radius: 2rem; padding: 2rem; margin: 2rem 0; box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
+    /* Light grey box with dashed border – used for interactive demos */
     .demo-box { background: #f1f5f9; border-radius: 1.5rem; padding: 1.5rem; margin-top: 1.5rem; border: 1px dashed #94a3b8; }
+    /* Code block styling – dark background, light text, scrollable */
     pre {
       background: #1e293b;
       color: #e2e8f0;
@@ -39,8 +50,11 @@
       word-wrap: break-word;
       font-size: 0.9rem;
     }
+    /* Monospace for inline code snippets */
     code { font-family: 'Courier New', monospace; }
+    /* Slightly larger badges used in the summary section */
     .badge-large { font-size: 0.9rem; padding: 0.6rem 1.2rem; }
+    /* Quoted definition box – blue left border and light background */
     .quote-definition {
       background: #eef2f6;
       border-left: 5px solid #1b4a6b;
@@ -52,6 +66,7 @@
   </style>
 </head>
 <body>
+  <!-- Sticky navbar: same as on index page, with active link "Full stack" -->
   <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm sticky-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-code-square me-2" style="color:#1b4a6b;"></i>Shankar·FullStack</a>
@@ -70,7 +85,7 @@
   </nav>
 
   <main class="container">
-    <!-- 1. FULL STACK DEFINITION (exact from PDF) + interactive demo -->
+    <!-- 1. FULL STACK DEFINITION SECTION (exact quote from PDF) + interactive layer toggle -->
     <section class="section-card">
       <div class="d-flex align-items-center gap-3 mb-3">
         <i class="bi bi-stack" style="font-size:2.5rem; color:#1b4a6b;"></i>
@@ -81,11 +96,13 @@
       </div>
       <p class="mt-3">Click the buttons below to see a quick summary of each layer – the rest of this page dives into concrete examples with code.</p>
       <div class="demo-box">
+        <!-- Three toggle buttons: Frontend, Backend, Database. The active class is set initially on Frontend. -->
         <div class="btn-group flex-wrap mb-4">
           <button class="btn btn-outline-custom active" id="btnFrontend" onclick="showLayer('frontend')">🎨 Frontend</button>
           <button class="btn btn-outline-custom" id="btnBackend" onclick="showLayer('backend')">⚙️ Backend</button>
           <button class="btn btn-outline-custom" id="btnDb" onclick="showLayer('db')">🗄️ Database</button>
         </div>
+        <!-- This area updates based on which button is clicked -->
         <div id="layerInfo" class="p-3 bg-white rounded-4 border">
           <h3 class="h5" id="layerTitle">Frontend (client-side)</h3>
           <p id="layerDesc">HTML, CSS, JavaScript, frameworks like React. I built this whole site with Bootstrap.</p>
@@ -106,10 +123,12 @@
       <p>Below is a minimal but complete frontend interaction built with HTML, CSS (via Bootstrap), and vanilla JavaScript. It shows how JavaScript directly manipulates the DOM.</p>
       <div class="demo-box">
         <div class="text-center mb-4">
+          <!-- Counter display, updated by JavaScript -->
           <h3 id="counterValue" class="display-4 fw-bold" style="color:#1b4a6b;">0</h3>
           <button class="btn btn-outline-custom px-4 me-2" id="incrementBtn">➕ Increment</button>
           <button class="btn btn-outline-custom px-4" id="resetBtn">⟲ Reset</button>
         </div>
+        <!-- Showing the exact JavaScript that powers the counter above -->
         <pre><code>// Frontend JavaScript (DOM manipulation)
 let count = 0;
 const counterEl = document.getElementById('counterValue');
@@ -141,6 +160,7 @@ resetBtn.addEventListener('click', () => {
       </div>
       <p>Here is a simple backend API written in PHP that returns a list of users as JSON – exactly what a frontend would fetch to display profiles.</p>
       <div class="demo-box">
+        <!-- PHP code snippet – not executable here, just for illustration -->
         <pre><code>&lt;?php
 // api/users.php – backend endpoint written in PHP
 header('Content-Type: application/json');
@@ -173,6 +193,7 @@ echo json_encode($users);
       <p>Below is how you would define and query a table using SQL (MySQL/PostgreSQL). This is the language used to interact with relational databases.</p>
       <div class="demo-box">
         <h3 class="h6 fw-bold">🗃️ SQL (MySQL)</h3>
+        <!-- SQL statements showing table creation, insert, select, join -->
         <pre><code>-- Create a table to store users
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -200,17 +221,19 @@ JOIN orders ON users.id = orders.user_id;</code></pre>
       <p><strong>🧠 Key takeaway:</strong> The database stores all persistent data. It is the foundation that both the backend and frontend ultimately rely on.</p>
     </section>
 
-    <!-- summary section (attractive) -->
+    <!-- summary section (attractive) – wraps up the three layers -->
     <section class="section-card text-center" style="background: linear-gradient(145deg, #f1f5f9, #ffffff);">
       <i class="bi bi-globe2" style="font-size:3rem; color:#1b4a6b;"></i>
       <h3 class="fw-bold mt-3">Full stack = frontend + backend + database</h3>
       <p class="lead mx-auto" style="max-width:700px;">The three layers work together: the frontend (what users see) talks to the backend (server logic), which reads from and writes to the database. As a junior full stack developer, I'm comfortable working across all three.</p>
+      <!-- Badges listing the main technologies covered -->
       <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
         <span class="badge bg-dark text-white px-4 py-2 rounded-pill badge-large">HTML/CSS/JS</span>
         <span class="badge bg-dark text-white px-4 py-2 rounded-pill badge-large">PHP</span>
         <span class="badge bg-dark text-white px-4 py-2 rounded-pill badge-large">SQL (MySQL)</span>
         <span class="badge bg-dark text-white px-4 py-2 rounded-pill badge-large">REST APIs</span>
       </div>
+      <!-- The commented line below is left as is, no change -->
       <!-- <p class="mt-4 text-muted"><i class="bi bi-check-circle-fill me-1" style="color:#1b4a6b;"></i> All definitions and examples match the PDF assignment exactly.</p> -->
     </section>
   </main>
@@ -220,10 +243,14 @@ JOIN orders ON users.id = orders.user_id;</code></pre>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // ----- layer toggle (full stack intro) -----
+    // This function handles the three toggle buttons in the first demo box.
     function showLayer(layer) {
+      // Remove 'active' class from all three toggle buttons
       document.getElementById('btnFrontend').classList.remove('active');
       document.getElementById('btnBackend').classList.remove('active');
       document.getElementById('btnDb').classList.remove('active');
+      
+      // Then add 'active' to the clicked button and update the text below
       if (layer === 'frontend') {
         document.getElementById('btnFrontend').classList.add('active');
         document.getElementById('layerTitle').innerText = 'Frontend (client-side)';
@@ -240,16 +267,18 @@ JOIN orders ON users.id = orders.user_id;</code></pre>
     }
 
     // ----- frontend counter -----
+    // This code runs after the page is fully loaded and sets up the counter.
     document.addEventListener('DOMContentLoaded', function() {
       let count = 0;
       const counterEl = document.getElementById('counterValue');
       const incBtn = document.getElementById('incrementBtn');
       const resetBtn = document.getElementById('resetBtn');
 
+      // Check that all elements exist before attaching events
       if (incBtn && resetBtn && counterEl) {
         incBtn.addEventListener('click', () => {
           count++;
-          counterEl.textContent = count;
+          counterEl.textContent = count;  // update the displayed number
         });
 
         resetBtn.addEventListener('click', () => {

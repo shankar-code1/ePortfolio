@@ -4,32 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScript · Shankar</title>
-  <!-- Bootstrap 5 + Icons -->
+  <!-- Bootstrap 5 – gives me responsive grid, nice buttons, cards, and utility classes -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons – easy icons for visual flair (I use them in headings and buttons) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Google Fonts Inter – a clean, modern font that's easy to read -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
-  <!-- canvas-confetti for the splash effect -->
+  <!-- canvas-confetti library – lets me add confetti effects easily (used in the toggle demo) -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
   <style>
+    /* Ensures anchor links don't get hidden under the fixed navbar when clicked */
     html { scroll-padding-top: 80px; }
+    /* Use Inter everywhere, fallback to sans-serif if it doesn't load */
     * { font-family: 'Inter', sans-serif; }
+    /* Light background for the whole page – subtle and professional */
     body { background: #f8fafc; }
+    /* Nav link styles: normal state and the little underline on hover/active */
     .nav-link { font-weight: 500; color: #1e293b !important; }
     .nav-link:hover,
     .nav-link.active {
       color: #0b2b44 !important;
       border-bottom: 2px solid #0b2b44;
     }
+    /* Custom outline button – used for various actions (like the confetti button) */
     .btn-outline-custom { border: 1px solid #1b4a6b; color: #1b4a6b; border-radius: 40px; }
     .btn-outline-custom:hover { background: #1b4a6b; color: white; }
+    /* White card with rounded corners and a soft shadow – each section is wrapped in one */
     .section-card { background: white; border-radius: 2rem; padding: 2rem; margin: 2rem 0; box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
+    /* Light gray dashed box – used for interactive demos inside sections */
     .demo-box { background: #f1f5f9; border-radius: 1.5rem; padding: 1.5rem; margin-top: 1.5rem; border: 1px dashed #94a3b8; transition: background-color 0.3s; }
+    /* Table header for the concepts table – dark blue to match theme */
     .js-concept-table th { background: #1b4a6b; color: white; }
+    /* Small badge for inline code examples */
     .example-badge { background: #eef2f6; padding: 0.2rem 0.8rem; border-radius: 2rem; font-family: monospace; font-size: 0.85rem; display: inline-block; }
+    /* Class to turn the count badge red when limit is reached (used in JS) */
     .limit-reached { background-color: #dc3545 !important; }
   </style>
 </head>
 <body>
+  <!-- Sticky navigation bar – same structure across all pages. "JavaScript" is the active item. -->
   <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm sticky-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-code-square me-2" style="color:#1b4a6b;"></i>Shankar·FullStack</a>
@@ -48,7 +61,7 @@
   </nav>
 
   <main class="container">
-    <!-- Introduction to JavaScript -->
+    <!-- Intro section: what JavaScript is and why it matters -->
     <section class="section-card">
       <div class="d-flex align-items-center gap-3 mb-3">
         <i class="bi bi-filetype-js" style="font-size:2.5rem; color:#f7df1e;"></i>
@@ -57,7 +70,7 @@
       <p><strong>JavaScript</strong> is the programming language of the web. It allows you to create dynamic content, control multimedia, animate images, and handle user interactions. Everything from form validation to complex single-page applications is powered by JS.</p>
     </section>
 
-    <!-- Original interactive demo (enhanced with description) -->
+    <!-- Live demos section: character counter and confetti toggle. These show real interactivity. -->
     <section class="section-card">
       <div class="d-flex align-items-center gap-3 mb-3">
         <i class="bi bi-lightning-charge" style="font-size:2.5rem; color:#f7df1e;"></i>
@@ -65,6 +78,7 @@
       </div>
       <p>Below are two classic JavaScript demos: a live character counter and a confetti‑popping toggle. They show real‑time DOM manipulation, event handling, and even using an external library (canvas‑confetti).</p>
       <div class="demo-box" id="jsDemoBox">
+        <!-- Character counter: textarea with maxlength, and oninput we call updateCounter() -->
         <label for="message" class="form-label fw-semibold">Write something (max 50 chars):</label>
         <textarea class="form-control" id="message" rows="2" maxlength="50" oninput="updateCounter()" placeholder="e.g. JavaScript is cool!"></textarea>
         <div class="d-flex justify-content-between mt-2">
@@ -73,13 +87,14 @@
         </div>
 
         <hr class="my-3">
+        <!-- Button to toggle background and trigger confetti – onclick event -->
         <button class="btn btn-outline-custom" onclick="toggleColorWithConfetti()">✨ change box color & splash</button>
         <p class="small mt-2" id="bgStatus">Background: default light grey</p>
       </div>
       <p><strong>What's happening:</strong> The <code>oninput</code> event updates the character count. When you click the button, an <code>onclick</code> event toggles the background colour and fires confetti inside the box using the canvas‑confetti library.</p>
     </section>
 
-    <!-- JavaScript concepts table (common topics) -->
+    <!-- Core concepts table: lists important JS ideas with code examples -->
     <section class="section-card">
       <div class="d-flex align-items-center gap-3 mb-4">
         <i class="bi bi-book" style="font-size:2.5rem; color:#f7df1e;"></i>
@@ -131,7 +146,7 @@
       </div>
     </section>
 
-    <!-- ES5 vs ES6+ comparison -->
+    <!-- ES5 vs ES6 comparison – shows how modern JS improves things -->
     <section class="section-card">
       <div class="d-flex align-items-center gap-3 mb-4">
         <i class="bi bi-arrow-repeat" style="font-size:2.5rem; color:#f7df1e;"></i>
@@ -184,7 +199,7 @@
       <p class="text-muted small mt-3"><i class="bi bi-check-circle"></i> Modern JavaScript (ES6+) makes code cleaner, safer, and more expressive.</p>
     </section>
 
-    <!-- Asynchronous JavaScript -->
+    <!-- Asynchronous JS section – explains callbacks, promises, async/await with a live fetch demo -->
     <section class="section-card">
       <div class="d-flex align-items-center gap-3 mb-3">
         <i class="bi bi-clock-history" style="font-size:2.5rem; color:#f7df1e;"></i>
@@ -196,6 +211,7 @@
         <div id="userResult" class="p-3 bg-white rounded-4 border" style="min-height: 80px;">
           Click the button to load data.
         </div>
+        <!-- Code snippet showing async/await in action -->
         <pre style="background:#1e293b; color:#e2e8f0; padding:1rem; border-radius:1rem; margin-top:1rem;"><code>async function fetchUser() {
   const res = await fetch('https://randomuser.me/api/');
   const data = await res.json();
@@ -205,7 +221,7 @@
       </div>
     </section>
 
-    <!-- Summary / call to action -->
+    <!-- Summary / wrap-up -->
     <section class="section-card text-center" style="background: linear-gradient(145deg, #f1f5f9, #ffffff);">
       <i class="bi bi-filetype-js" style="font-size:3rem; color:#f7df1e;"></i>
       <h3 class="fw-bold mt-3">JavaScript powers the interactive web</h3>
@@ -213,10 +229,13 @@
     </section>
   </main>
 
+  <!-- Footer – simple credit line -->
   <footer class="bg-white text-center p-4 mt-5 border-top"><p class="mb-0">Made with ❤️ and ☕ in Nepal</p></footer>
+  <!-- Bootstrap JS bundle – needed for the navbar toggler and other interactive components -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Existing functions from original demo
+    // ----- Character counter logic -----
+    // This function is called every time the user types in the textarea (oninput event).
     function updateCounter() {
       const textarea = document.getElementById('message');
       const countSpan = document.getElementById('charCount');
@@ -224,12 +243,14 @@
       const len = textarea.value.length;
       countSpan.innerText = len + ' / 50';
 
+      // If we hit exactly 50 chars, add a red background to the badge and show a warning message.
       if (len === 50) {
         countSpan.classList.add('limit-reached');
         remainingMsg.innerText = '🚫 Limit reached';
         remainingMsg.style.color = '#dc3545';
       } else {
         countSpan.classList.remove('limit-reached');
+        // If we're close to the limit (45-49), show a subtle warning.
         if (len >= 45) {
           remainingMsg.innerText = '⚠️ nearing limit';
           remainingMsg.style.color = '#b02e0c';
@@ -239,31 +260,34 @@
       }
     }
 
+    // ----- Toggle background color and trigger confetti -----
+    // Called when the "change box color & splash" button is clicked.
     function toggleColorWithConfetti() {
       const box = document.getElementById('jsDemoBox');
       const status = document.getElementById('bgStatus');
       
-      // Check current background color (default is light grey #f1f5f9)
+      // Check the current background color. We toggle between light grey and warm antique white.
+      // getComputedStyle would be more robust, but we stored the color inline, so we check style.backgroundColor.
       const currentColor = box.style.backgroundColor;
       const isWarmAntique = currentColor === 'rgb(250, 235, 215)' || currentColor === '#faebd7';
       
       if (isWarmAntique) {
-        // Switch back to light grey – NO confetti
+        // Switch back to default light grey – NO confetti.
         box.style.backgroundColor = '#f1f5f9';
         box.style.border = '1px dashed #94a3b8';
         status.innerText = 'Background: default light grey (no confetti)';
       } else {
-        // Switch to warm antique white – WITH BIG confetti inside the box
+        // Switch to warm antique white – AND fire confetti inside the box.
         box.style.backgroundColor = '#faebd7'; // warm antique white
         box.style.border = '2px solid #c4a27a';
         status.innerText = 'Background: warm antique white + BIG confetti inside!';
 
-        // Get box position for confetti origin
+        // Get the position of the box on the screen so confetti originates from inside it.
         const rect = box.getBoundingClientRect();
         const centerX = (rect.left + rect.width / 2) / window.innerWidth;
         const centerY = (rect.top + rect.height / 2) / window.innerHeight;
 
-        // Fire multiple bursts for a bigger, wider splash
+        // Fire a first burst with many particles and a wide spread.
         confetti({
           particleCount: 200,
           spread: 100,
@@ -272,6 +296,7 @@
           colors: ['#ffb6c1', '#ff69b4', '#ffd700', '#98fb98', '#e6e6fa', '#faebd7', '#ffa07a', '#20b2aa']
         });
 
+        // A second burst slightly offset for a more dramatic effect.
         setTimeout(() => {
           confetti({
             particleCount: 100,
@@ -284,14 +309,16 @@
       }
     }
 
-    // Async fetch demo
+    // ----- Async fetch demo: get a random user from randomuser.me -----
     async function fetchUser() {
       const resultDiv = document.getElementById('userResult');
+      // Show a spinner while loading
       resultDiv.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Loading...';
       try {
         const res = await fetch('https://randomuser.me/api/');
         const data = await res.json();
         const user = data.results[0];
+        // Display user info: name, location, and a small thumbnail
         resultDiv.innerHTML = `
           <strong>${user.name.first} ${user.name.last}</strong><br>
           📍 ${user.location.city}, ${user.location.country}<br>
@@ -302,6 +329,7 @@
       }
     }
 
+    // On page load, make sure the counter shows initial state and the demo box has its default background.
     window.onload = function() {
       updateCounter();
       document.getElementById('jsDemoBox').style.backgroundColor = '#f1f5f9';

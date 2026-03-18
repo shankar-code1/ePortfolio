@@ -4,49 +4,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTML · Shankar</title>
+  <!-- Bootstrap 5 CSS – gives us responsive grid, buttons, tables, and utility classes -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons – a set of icons for visual enhancement (used in headings and buttons) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Google Fonts Inter – clean and modern font for better readability -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
   <style>
+    /* So that anchor links don't get hidden under the fixed navbar when clicked */
     html { scroll-padding-top: 80px; }
+    /* Apply Inter font to everything, with fallback */
     * { font-family: 'Inter', sans-serif; }
+    /* Light page background for a soft look */
     body { background: #f8fafc; }
+    /* Navbar link styles – default color and hover/active underline effect */
     .nav-link { font-weight: 500; color: #1e293b !important; }
     .nav-link:hover,
     .nav-link.active {
       color: #0b2b44 !important;
       border-bottom: 2px solid #0b2b44;
     }
+    /* Custom outline button – used for the form submit and possibly elsewhere */
     .btn-outline-custom { border: 1px solid #1b4a6b; color: #1b4a6b; border-radius: 40px; }
     .btn-outline-custom:hover { background: #1b4a6b; color: white; }
+    /* White card with rounded corners and soft shadow – each main section uses this */
     .section-card { background: white; border-radius: 2rem; padding: 2rem; margin: 2rem 0; box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
+    /* Light gray dashed box for demo content (forms, tables, examples) */
     .demo-box { background: #f1f5f9; border-radius: 1.5rem; padding: 1.5rem; margin-top: 1.5rem; border: 1px dashed #94a3b8; }
+    /* Inline code block style for showing HTML tag examples */
     .element-example { background: #eef2f6; padding: 0.3rem 0.8rem; border-radius: 2rem; font-family: monospace; font-size: 0.9rem; display: inline-block; }
+    /* Table header styling for the elements reference table – dark blue background */
     .table-elements th { background: #1b4a6b; color: white; font-weight: 500; }
-    .table-elements td { vertical-align: middle; }
+    /* Table header for the HTML4 vs HTML5 comparison table – darker blue */
     .comparison-table th { background: #0b2b44; color: white; }
   </style>
 </head>
 <body>
+  <!-- Sticky navigation bar – same structure as other pages, with "HTML" set as active -->
   <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm sticky-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-code-square me-2" style="color:#1b4a6b;"></i>Shankar·FullStack</a>
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="fullstack.html">Full stack</a></li>
-        <li class="nav-item"><a class="nav-link active" href="html.html">HTML</a></li>
-        <li class="nav-item"><a class="nav-link" href="css.html">CSS</a></li>
-        <li class="nav-item"><a class="nav-link" href="bootstrap.html">Bootstrap</a></li>
-        <li class="nav-item"><a class="nav-link" href="javascript.html">JavaScript</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-      </ul>
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-code-square me-2" style="color:#1b4a6b;"></i>Shankar·FullStack</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="fullstack.html">Full stack</a></li>
+          <li class="nav-item"><a class="nav-link active" href="html.html">HTML</a></li>
+          <li class="nav-item"><a class="nav-link" href="css.html">CSS</a></li>
+          <li class="nav-item"><a class="nav-link" href="bootstrap.html">Bootstrap</a></li>
+          <li class="nav-item"><a class="nav-link" href="javascript.html">JavaScript</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <main class="container">
-    <!-- Existing section: form + simple table -->
+    <!-- First section: HTML introduction with a live form and a simple table demo -->
     <section class="section-card">
       <div class="d-flex align-items-center gap-3 mb-3">
         <i class="bi bi-filetype-html" style="font-size:2.5rem; color:#e34c26;"></i>
@@ -57,6 +70,7 @@
         <div class="row g-4">
           <div class="col-md-6">
             <h3 class="h5"><i class="bi bi-pencil-square me-2"></i>Sample form</h3>
+            <!-- Basic form with name, email, age fields. On submit, we prevent actual submission and just show an alert. -->
             <form onsubmit="event.preventDefault(); alert('HTML form demo — no data sent');">
               <div class="mb-2"><label class="form-label">Name</label><input type="text" class="form-control" placeholder="e.g. Shankar"></div>
               <div class="mb-2"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="hello@example.com"></div>
@@ -66,6 +80,7 @@
           </div>
           <div class="col-md-6">
             <h3 class="h5"><i class="bi bi-table me-2"></i>Simple table</h3>
+            <!-- A two-column table showing some HTML tags and their purpose -->
             <table class="table table-bordered bg-white">
               <thead><tr><th>Tag</th><th>Use</th></tr></thead>
               <tbody>
@@ -81,7 +96,7 @@
       <p><strong>What I want to show:</strong> I know how to build accessible, well-structured HTML forms and tables.</p>
     </section>
 
-    <!-- HTML elements table (only code examples) -->
+    <!-- Second section: HTML elements reference table – shows common tags with examples -->
     <section class="section-card">
       <div class="d-flex align-items-center gap-3 mb-4">
         <i class="bi bi-list-columns" style="font-size:2.5rem; color:#1b4a6b;"></i>
@@ -90,6 +105,7 @@
       <p class="mb-4">A quick reference of common HTML tags, their purpose, and a code example.</p>
 
       <div class="table-responsive">
+        <!-- Table with three columns: element name, description, and a short code snippet -->
         <table class="table table-elements table-bordered align-middle bg-white">
           <thead>
             <tr>
@@ -115,7 +131,7 @@
       </div>
     </section>
 
-    <!-- HTML4 vs HTML5 comparison table -->
+    <!-- Third section: HTML4 vs HTML5 comparison – highlights improvements in HTML5 -->
     <section class="section-card">
       <div class="d-flex align-items-center gap-3 mb-4">
         <i class="bi bi-bar-chart-steps" style="font-size:2.5rem; color:#1b4a6b;"></i>
@@ -124,6 +140,7 @@
       <p class="mb-4">HTML5 introduced many improvements over HTML4. Here's a comparison of key features and how HTML5 makes development easier and more powerful.</p>
 
       <div class="table-responsive">
+        <!-- Comparison table with three columns: feature, HTML4 approach, HTML5 advantage -->
         <table class="table table-bordered comparison-table align-middle bg-white">
           <thead>
             <tr>
@@ -175,7 +192,9 @@
     </section>
   </main>
 
+  <!-- Footer – simple credit line -->
   <footer class="bg-white text-center p-4 mt-5 border-top"><p class="mb-0">Made with ❤️ and ☕ in Nepal</p></footer>
+  <!-- Bootstrap JavaScript bundle – required for responsive navbar toggler and other interactive components -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
